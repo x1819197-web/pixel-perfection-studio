@@ -1,6 +1,7 @@
 # Roadmap
 
-- [x] Mavjud saytga xos, AI-shablon ko‘rinishidan xoli ultra-premium dizayn yaratish
-- [x] Rang, shrift va joylashuv didini foydalanuvchi bilan aniqlash
-- [x] Tanlangan did asosida uchta yangi yo‘nalish ko‘rsatish
-- [x] Tanlangan yo‘nalishni to‘liq saytga tatbiq etish
+- [x] Editorial Journal Identity asosida sahifani qayta qurish
+- [x] Haqiqiy portfolio rasmlari va shaxsiy hikoyani kengaytirish
+- [x] Loyihalar, xizmatlar, menyu va til tanlovini interaktiv qilish
+- [ ] Desktop va mobil ko‘rinishni tekshirish
+- [ ] Barcha asosiy tugmalar va oynalarni tekshirish

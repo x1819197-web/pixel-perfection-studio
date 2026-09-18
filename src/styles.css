@@ -19,8 +19,8 @@
  */
 
 @theme inline {
-  --font-sans: "DM Sans", sans-serif;
-  --font-display: "Space Grotesk", sans-serif;
+  --font-sans: "Hind", sans-serif;
+  --font-display: "Archivo Black", sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -61,19 +61,25 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-acid: var(--acid);
+  --color-acid-foreground: var(--acid-foreground);
+  --color-paper: var(--paper);
+  --color-paper-foreground: var(--paper-foreground);
+  --color-paper-muted: var(--paper-muted);
+  --color-paper-border: var(--paper-border);
 }
 
 :root {
   --radius: 0rem;
-  --background: oklch(0.14 0.004 95);
-  --foreground: oklch(0.95 0.012 90);
-  --card: oklch(0.18 0.005 95);
+  --background: oklch(0.135 0.003 80);
+  --foreground: oklch(0.965 0.01 90);
+  --card: oklch(0.18 0.004 80);
   --card-foreground: oklch(0.95 0.012 90);
   --popover: oklch(0.18 0.005 95);
   --popover-foreground: oklch(0.95 0.012 90);
-  --primary: oklch(0.64 0.19 32);
+  --primary: oklch(0.62 0.235 29);
   --primary-foreground: oklch(0.98 0.005 90);
-  --secondary: oklch(0.22 0.005 95);
+  --secondary: oklch(0.19 0.004 80);
   --secondary-foreground: oklch(0.95 0.012 90);
   --muted: oklch(0.22 0.005 95);
   --muted-foreground: oklch(0.7 0.012 90);
@@ -81,7 +87,7 @@
   --accent-foreground: oklch(0.98 0.005 90);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.27 0.006 95);
+  --border: oklch(0.28 0.006 80);
   --input: oklch(0.27 0.006 95);
   --ring: oklch(0.64 0.19 32);
   --chart-1: oklch(0.646 0.222 41.116);
@@ -97,6 +103,12 @@
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
+  --acid: oklch(0.89 0.21 112);
+  --acid-foreground: oklch(0.16 0.02 112);
+  --paper: oklch(0.94 0.018 85);
+  --paper-foreground: oklch(0.17 0.008 80);
+  --paper-muted: oklch(0.48 0.012 80);
+  --paper-border: oklch(0.72 0.014 80);
 }
 
 .dark {
@@ -149,6 +161,80 @@
 
 html { scroll-behavior: smooth; }
 
+body { overflow-x: hidden; }
+
+button, a { -webkit-tap-highlight-color: transparent; }
+
+.editorial-link {
+  position: relative;
+  transition: color 250ms ease;
+}
+
+.editorial-link::after {
+  position: absolute;
+  right: 0;
+  bottom: -0.35rem;
+  left: 0;
+  height: 1px;
+  content: "";
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 300ms ease;
+}
+
+.editorial-link:hover::after, .editorial-link:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.hero-name { mix-blend-mode: difference; }
+
+.outline-word {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--primary);
+}
+
+.section-kicker {
+  color: var(--primary);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.ticker-track { animation: ticker 28s linear infinite; }
+
+.production-shot { cursor: pointer; text-align: left; }
+
+.play-control {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  width: 4rem;
+  height: 4rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  color: var(--primary-foreground);
+  background: var(--primary);
+  transform: translate(-50%, -50%);
+  transition: transform 350ms ease, background 350ms ease;
+}
+
+.production-shot:hover .play-control { transform: translate(-50%, -50%) scale(1.12) rotate(8deg); }
+
+.shot-caption {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  color: var(--foreground);
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
 @keyframes reveal-up {
   from { opacity: 0; transform: translateY(28px); }
   to { opacity: 1; transform: translateY(0); }
@@ -158,6 +244,17 @@ html { scroll-behavior: smooth; }
   from { transform: translateX(-100%); }
   to { transform: translateX(340%); }
 }
+
+@keyframes ticker {
+  to { transform: translateX(-50%); }
+}
+
+@keyframes modal-enter {
+  from { opacity: 0; transform: translateY(2rem) scale(0.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal-enter { animation: modal-enter 450ms cubic-bezier(.22,.8,.3,1) both; }
 
 @utility reveal-up { animation: reveal-up 0.8s cubic-bezier(.22,.8,.3,1) both; }
 @utility scan-line { animation: scan 4.8s ease-in-out infinite; }
